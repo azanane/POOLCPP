@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.h                                        :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anaszanane <anaszanane@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 14:50:10 by anaszanane        #+#    #+#             */
-/*   Updated: 2022/04/05 15:18:23 by anaszanane       ###   ########.fr       */
+/*   Created: 2022/06/11 09:06:46 by anaszanane        #+#    #+#             */
+/*   Updated: 2022/06/11 11:19:03 by anaszanane       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#include <iostream>
 
-# include <iostream>
-# include <string>
-# include "PhoneBook.class.hpp"
+int	main(int ac, char **av)
+{
+	if (ac == 1)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+	else
+	{
+		std::string	input;
+		int			i;
 
-int		main(int ac, char **av);
-
-void	add_contact();
-void	search_contact();
-
-#endif
+		i = 1;
+		while (av[i])
+		{
+			input = av[i];
+			std::transform(input.begin(), input.end(), input.begin(), ::toupper);
+			std::cout << input;
+			i++;
+		}
+		std::cout << "\n";
+	}
+}

@@ -4,6 +4,7 @@ GREEN=$'\x1b[32m
 BLUE=$'\x1b[34m
 ERASE=\033[2K\r
 
+
 SRCS	=	megaphone.cpp \
 
 OBJS	=	$(addprefix .objects/, $(SRCS:.cpp=.o))
@@ -18,7 +19,11 @@ RM			=	rm -f
 
 all:		${NAME}
 
-.objects/%.o:	%.c Makefile
+$(NAME): $(OBJS) Makefile
+	@$(CC) $(OBJS) -I includes -o $@
+	@echo "$(ERASE)$(GREEN)[CREATED $(NAME)]$(END)"
+
+.objects/%.o:	%.cpp Makefile ${HEAD}
 			@mkdir -p .objects
 			@${CC} ${FLAGS} -c $< -o $@
 			@printf "${ERASE}${BLUE}[BUILDING]${END} $@"

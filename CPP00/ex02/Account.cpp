@@ -6,7 +6,7 @@
 /*   By: anaszanane <anaszanane@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:51 by anaszanane        #+#    #+#             */
-/*   Updated: 2022/08/17 14:53:55 by anaszanane       ###   ########.fr       */
+/*   Updated: 2022/08/18 15:52:03 by anaszanane       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ Account::~Account(void) {
 };
 
 Account::Account(int initial_deposite) {
+
+	this->_accountIndex = 0;
+	this->_amount = 0;
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
 
 	_displayTimestamp();
 

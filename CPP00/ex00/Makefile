@@ -23,7 +23,7 @@ $(NAME): $(OBJS) Makefile
 	@$(CC) $(OBJS) -I includes -o $@
 	@echo "$(ERASE)$(GREEN)[CREATED $(NAME)]$(END)"
 
-.objects/%.o:	%.cpp Makefile ${HEAD}
+.objects/%.o:	%.cpp Makefile
 			@mkdir -p .objects
 			@${CC} ${FLAGS} -c $< -o $@
 			@printf "${ERASE}${BLUE}[BUILDING]${END} $@"

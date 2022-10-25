@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anaszanane <anaszanane@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azanane <azanane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:51 by anaszanane        #+#    #+#             */
-/*   Updated: 2022/08/18 15:52:03 by anaszanane       ###   ########.fr       */
+/*   Updated: 2022/08/24 10:12:05 by azanane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 	std::cout << "amount:" << this->_amount << ';';
 	
 	this->_nbWithdrawals += 1;
+	this->_totalNbWithdrawals += 1;
 	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << '\n';
 
 	return true;

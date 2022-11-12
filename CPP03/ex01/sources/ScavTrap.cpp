@@ -1,8 +1,17 @@
 #include "../includes/ScavTrap.hpp"
 
-ScavTrap::ScavTrap( std::string const & name ) : ClapTrap(name) {
+ScavTrap::ScavTrap( void ) : ClapTrap() {
 
 	std::cout << "Scav Trap class default constructor" << std::endl;
+
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+}
+
+ScavTrap::ScavTrap( std::string const & name ) : ClapTrap(name) {
+
+	std::cout << "Scav Trap class string constructor" << std::endl;
 
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
@@ -30,6 +39,18 @@ ScavTrap & ScavTrap::operator=( ScavTrap const & rhs ) {
 	this->_attackDamage = rhs._attackDamage;
 
 	return *this;
+}
+
+void	ScavTrap::attack( const std::string& target ) {
+
+	if (this->_hitPoints > 0 && this->_energyPoints > 0)
+	{
+		std::cout << "Scav " << this->_name << " attacks " << target << " causing " << this->_attackDamage << " points of damage!" << std::endl;
+
+		this->_energyPoints -= 1;
+	}
+	else
+		std::cout << this->_name <<  " cannot attacks, a dead scav can't do anything..." << std::endl;
 }
 
 void	ScavTrap::guardGate() {

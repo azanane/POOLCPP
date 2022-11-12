@@ -3,16 +3,23 @@
 
 int	main( void )
 {
-	ScavTrap	scave("Anas");
 	FragTrap	frag("Max");
-
-	scave.guardGate();
-	scave.attack("Max");
-	frag.takeDamage(20);
+	FragTrap	newFrag(frag);
+	FragTrap	lastFrag;
 	
-	frag.highFiveGuys();
-	frag.attack("Anas");
-	scave.takeDamage(30);
+	std::cout << std::endl;
+
+	frag.takeDamage(9);
+	frag.beRepaired(2);
+	
+	frag.takeDamage(3);
+	frag.beRepaired(2);
+
+	std::cout << std::endl;
+	lastFrag.takeDamage(100);
+	lastFrag.beRepaired(1);
+
+	std::cout << std::endl;
 
 	return 0;
 }

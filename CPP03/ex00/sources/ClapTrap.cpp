@@ -12,7 +12,7 @@ ClapTrap::ClapTrap( void ) {
 
 ClapTrap::ClapTrap( std::string const & name ) : _name(name) {
 
-	std::cout << "Clap Trap class name constructor" << std::endl;
+	std::cout << "Clap Trap class string constructor" << std::endl;
 
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
@@ -70,7 +70,7 @@ void ClapTrap::beRepaired( unsigned int amount ) {
 
 	if (this->_hitPoints > 0 && this->_energyPoints > 0)
 	{
-		std::cout << "Clap trap " << this->_name << " repair itself and regain " << amount << " _hitPoints!" << std::endl;
+		std::cout << "Clap trap " << this->_name << " repair itself and regain " << amount << " hit points!" << std::endl;
 
 		this->_hitPoints += amount;
 		this->_energyPoints -= 1;

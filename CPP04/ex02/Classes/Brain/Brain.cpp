@@ -13,7 +13,7 @@ Brain::Brain( Brain const & src ) {
 		this->_ideas[i] = src._ideas[i];
 }
 
-Brain & Brain::operator=( Brain & rhs ) {
+Brain & Brain::operator=( Brain const & rhs ) {
 
 	for (int i = 0; i < 100; i++)
 		this->_ideas[i] = rhs._ideas[i];

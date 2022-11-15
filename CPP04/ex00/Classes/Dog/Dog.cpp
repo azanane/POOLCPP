@@ -14,7 +14,7 @@ Dog::Dog( Dog const & src ) {
 	this->_type = src._type;
 }
 
-Dog & Dog::operator=( Dog & rhs ) {
+Dog & Dog::operator=( Dog const & rhs ) {
 
 	this->_type = rhs._type;
 

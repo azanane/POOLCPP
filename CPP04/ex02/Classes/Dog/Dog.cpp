@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog( void ) {
+Dog::Dog( void ) : _brain(nullptr) {
 
 	PRINT("Dog default constrctor")
 
@@ -8,16 +8,22 @@ Dog::Dog( void ) {
 	this->_brain = new Brain();
 }
 
-Dog::Dog( Dog const & src ) {
+Dog::Dog( Dog const & src ) : _brain(nullptr) {
 
 	PRINT("Dog copy constrctor")
 
-	this->_type = src._type;
+	*this = src;
 }
 
-Dog & Dog::operator=( Dog & rhs ) {
+Dog & Dog::operator=( Dog const & rhs ) {
 
 	this->_type = rhs._type;
+
+	if (this->_brain)
+		delete this->_brain;
+	
+	this->_brain = new Brain();
+	*(this->_brain) = *(rhs._brain);
 
 	return *this;
 }

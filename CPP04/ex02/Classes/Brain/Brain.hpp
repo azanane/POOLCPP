@@ -9,7 +9,7 @@ class Brain {
 
 		Brain( void );
 		Brain( Brain const & src );
-		Brain & operator=( Brain & rhs );
+		Brain & operator=( Brain const & rhs );
 
 		~Brain( void );
 

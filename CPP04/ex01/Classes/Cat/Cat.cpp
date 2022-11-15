@@ -12,12 +12,18 @@ Cat::Cat( Cat const & src ) {
 
 	PRINT("Cat copy constrctor")
 
-	this->_type = src._type;
+	*this = src;
 }
 
-Cat & Cat::operator=( Cat & rhs ) {
+Cat & Cat::operator=( Cat const & rhs ) {
 
 	this->_type = rhs._type;
+
+	if (this->_brain)
+		delete this->_brain;
+	
+	this->_brain = new Brain();
+	*(this->_brain) = *(rhs._brain);
 
 	return *this;
 }

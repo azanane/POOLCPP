@@ -6,13 +6,13 @@ int main()
 	const AAnimal*	animals[10];
 	// const AAnimal*	test = new AAnimal(); // test to see that the AAnimal class can't be instancied
 
-	for (int i = 0; i < 5; i++)
-		animals[i] = new Dog();
-
-	PRINT("");
-
-	for (int i = 5; i < 10; i++)
-		animals[i] = new Cat();
+	for (int i = 0; i < 10; i++)
+	{
+		if (i < 10 / 2)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
 
 	PRINT(std::endl)
 

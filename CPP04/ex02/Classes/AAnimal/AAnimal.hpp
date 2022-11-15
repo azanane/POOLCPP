@@ -10,7 +10,7 @@ class AAnimal {
 
 		AAnimal( void );
 		AAnimal( AAnimal const & src );
-		AAnimal & operator=( AAnimal & rhs );
+		AAnimal & operator=( AAnimal const & rhs );
 
 		virtual ~AAnimal( void );
 

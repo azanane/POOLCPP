@@ -1,20 +1,36 @@
 #include "Bureaucrat/Bureaucrat.hpp"
 #include "AForm/AForm.hpp"
 #include "ShrubberyCreationForm/ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm/RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm/PresidentialPardonForm.hpp"
 
 int	main() 
 {
 	try {
 
 		Bureaucrat	bureaucrat("Anas", 1);
-		AForm*		formTest = new ShrubberyCreationForm("ok");
+		AForm*		formShrubbery = new ShrubberyCreationForm("formShrubbery");
 
-		--bureaucrat;
-		formTest->beSigned(bureaucrat);
+		formShrubbery->beSigned(bureaucrat);
+		bureaucrat.executeForm(*formShrubbery);
+		delete formShrubbery;
 
-		++bureaucrat;
+		PRINT("");
+		AForm*	formRobotomy = new RobotomyRequestForm("formRobotomy");
+		formRobotomy->beSigned(bureaucrat);
+		bureaucrat.executeForm(*formRobotomy);
+		delete formRobotomy;
 
-		formTest->execute(bureaucrat);
+		PRINT("");
+		AForm*	formPresidential = new PresidentialPardonForm("formPresidential");
+		formPresidential->beSigned(bureaucrat);
+		bureaucrat.executeForm(*formPresidential);
+		delete formPresidential;
+
+		PRINT("");
+		AForm*	formPresidentialNonSigned = new PresidentialPardonForm("formPresidential");
+		bureaucrat.executeForm(*formPresidentialNonSigned);
+
 	}
 	catch (std::exception& e)
 	{

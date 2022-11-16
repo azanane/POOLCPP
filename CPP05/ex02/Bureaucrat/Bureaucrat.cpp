@@ -48,6 +48,13 @@ void	Bureaucrat::signForm( std::string const & formName, bool const & signedForm
 		PRINT(this->_name << " couldn't sign " << formName << " because he don't have the required grade")
 }
 
+void	Bureaucrat::executeForm( AForm const & form ) const {
+
+	form.execute(*this);
+	PRINT(this->_name << " executed " << form.getName())
+}
+
+
 Bureaucrat & Bureaucrat::operator++( void ) {
 
 	if (this->_grade == 1)

@@ -12,16 +12,16 @@ class AForm {
 		AForm( AForm const & src );
 		AForm & operator=( AForm const & rhs );
 
-		~AForm( void );
+		virtual ~AForm( void );
 
-		void execute( Bureaucrat const & executor ) const;
+		void	beSigned( Bureaucrat const & bureaucrat );
+		void	execute( Bureaucrat const & executor ) const;
 
 		const std::string &	getName() const;
 		const bool        &	getSignedAForm() const;
 		const int         &	getGradeToSign() const;
 		const int         &	getGradeToExecute() const;
 
-		void	beSigned( Bureaucrat const & bureaucrat );
 
 		void	assignConstInt(int const & val, int const & toVal);
 		void	assignConstString(std::string const & val, std::string const & toVal);

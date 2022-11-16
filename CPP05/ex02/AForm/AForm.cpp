@@ -35,6 +35,21 @@ AForm & AForm::operator=( AForm const & rhs ) {
 
 AForm::~AForm( void ) {}
 
+void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
+
+	if (bureaucrat.getGrade() <= this->_gradeToSign) {
+
+		this->_signedAForm = true;
+		bureaucrat.signForm(this->_name, this->_signedAForm);
+	}
+	else
+	{
+		bureaucrat.signForm(this->_name, this->_signedAForm);
+		throw AForm::GradeTooLowException();
+	}
+
+}
+
 void AForm::execute( Bureaucrat const & executor ) const {
 
 	if (executor.getGrade() <= this->_gradeToExecute && this->getSignedAForm() == true)
@@ -50,20 +65,6 @@ const bool        &	AForm::getSignedAForm() const {return this->_signedAForm;}
 const int         &	AForm::getGradeToSign() const {return this->_gradeToSign;}
 const int         &	AForm::getGradeToExecute() const {return this->_gradeToExecute;}
 
-void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
-
-	if (bureaucrat.getGrade() <= this->_gradeToSign) {
-
-		this->_signedAForm = true;
-		bureaucrat.signForm(this->_name, this->_signedAForm);
-	}
-	else
-	{
-		bureaucrat.signForm(this->_name, this->_signedAForm);
-		throw AForm::GradeTooLowException();
-	}
-
-}
 
 void	AForm::assignConstInt(int const & val, int const & toVal) {
 
@@ -80,7 +81,6 @@ void	AForm::assignConstString(std::string const & val, std::string const & toVal
 	modify = (std::string*)&val;
 	*modify = (std::string)toVal;	
 }
-
 
 std::ostream & operator<<( std::ostream & o, AForm const & i ) {
 

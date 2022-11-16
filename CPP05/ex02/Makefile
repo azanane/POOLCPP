@@ -8,17 +8,20 @@ VPATH	=	Bureaucrat/: \
 			AForm/: \
 			ShrubberyCreationForm/: \
 			RobotomyRequestForm/: \
+			PresidentialPardonForm/: \
 
 SRCS	=	main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
 			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
 
 HEAD	=	./Bureaucrat/Bureaucrat.hpp \
 			./AForm/AForm.hpp \
 			./ShrubberyCreationForm/ShrubberyCreationForm.hpp \
 			./RobotomyRequestForm/RobotomyRequestForm.hpp \
+			./PresidentialPardonForm/PresidentialPardonForm.hpp \
 
 OBJS	=	$(addprefix .objects/, $(SRCS:.cpp=.o))
 

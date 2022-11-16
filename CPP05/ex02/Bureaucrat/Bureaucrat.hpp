@@ -2,6 +2,7 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+# include "../AForm/AForm.hpp"
 
 # define PRINT(x) std::cout << x << std::endl;
 # define PRINTNOEND(x) std::cout << x;
@@ -21,6 +22,7 @@ class Bureaucrat {
 		const int			&getGrade() const;
 
 		void	signForm( std::string const & formName, bool const & signedForm ) const;
+		void	executeForm( AForm const & form ) const;
 
 		Bureaucrat & operator++( void );
 		Bureaucrat operator++( int );

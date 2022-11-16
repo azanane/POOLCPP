@@ -12,7 +12,7 @@ WrongAnimal::WrongAnimal( WrongAnimal const & src ) {
 	this->_type = src._type;
 }
 
-WrongAnimal & WrongAnimal::operator=( WrongAnimal & rhs ) {
+WrongAnimal & WrongAnimal::operator=( WrongAnimal const & rhs ) {
 
 	this->_type = rhs._type;
 

@@ -10,7 +10,7 @@ class WrongAnimal {
 
 		WrongAnimal( void );
 		WrongAnimal( WrongAnimal const & src );
-		WrongAnimal & operator=( WrongAnimal & rhs );
+		WrongAnimal & operator=( WrongAnimal const & rhs );
 
 		~WrongAnimal( void );
 

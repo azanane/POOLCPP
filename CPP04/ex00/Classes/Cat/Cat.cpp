@@ -14,7 +14,7 @@ Cat::Cat( Cat const & src ) {
 	this->_type = src._type;
 }
 
-Cat & Cat::operator=( Cat & rhs ) {
+Cat & Cat::operator=( Cat const & rhs ) {
 
 	this->_type = rhs._type;
 

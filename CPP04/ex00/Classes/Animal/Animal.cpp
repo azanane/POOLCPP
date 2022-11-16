@@ -12,7 +12,7 @@ Animal::Animal( Animal const & src ) {
 	this->_type = src._type;
 }
 
-Animal & Animal::operator=( Animal & rhs ) {
+Animal & Animal::operator=( Animal const & rhs ) {
 
 	this->_type = rhs._type;
 

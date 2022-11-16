@@ -10,7 +10,7 @@ class Dog : public AAnimal {
 
 		Dog( void );
 		Dog( Dog const & src );
-		Dog & operator=( Dog & rhs );
+		Dog & operator=( Dog const & rhs );
 
 		~Dog( void );
 

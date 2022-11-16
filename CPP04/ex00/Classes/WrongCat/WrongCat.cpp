@@ -14,7 +14,7 @@ WrongCat::WrongCat( WrongCat const & src ) {
 	this->_type = src._type;
 }
 
-WrongCat & WrongCat::operator=( WrongCat & rhs ) {
+WrongCat & WrongCat::operator=( WrongCat const & rhs ) {
 
 	this->_type = rhs._type;
 

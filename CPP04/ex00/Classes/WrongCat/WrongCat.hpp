@@ -9,7 +9,7 @@ class WrongCat : public WrongAnimal {
 
 		WrongCat( void );
 		WrongCat( WrongCat const & src );
-		WrongCat & operator=( WrongCat & rhs );
+		WrongCat & operator=( WrongCat const & rhs );
 
 		~WrongCat( void );
 

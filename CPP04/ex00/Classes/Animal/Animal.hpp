@@ -10,7 +10,7 @@ class Animal {
 
 		Animal( void );
 		Animal( Animal const & src );
-		Animal & operator=( Animal & rhs );
+		Animal & operator=( Animal const & rhs );
 
 		virtual ~Animal( void );
 

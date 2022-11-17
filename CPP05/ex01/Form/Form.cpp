@@ -20,7 +20,7 @@ Form & Form::operator=( Form const & rhs ) {
 
 	this->assignConstString(this->_name, rhs._name);
 
-	if (rhs._gradeToSign < 1 || rhs._gradeToExecute)
+	if (rhs._gradeToSign < 1 || rhs._gradeToExecute < 1)
 		throw Form::GradeTooHighException();
 	if (rhs._gradeToSign > 150 || rhs._gradeToExecute > 150)
 		throw Form::GradeTooLowException();
@@ -42,7 +42,9 @@ const int         &	Form::getGradeToExecute() const {return this->_gradeToExecut
 
 void	Form::beSigned( Bureaucrat const & bureaucrat ) {
 
-	if (bureaucrat.getGrade() <= this->_gradeToSign) {
+	if (this->_signedForm)
+		PRINT(this->_name << " is already signed")
+	else if (bureaucrat.getGrade() <= this->_gradeToSign) {
 
 		this->_signedForm = true;
 		bureaucrat.signForm(this->_name, this->_signedForm);
@@ -60,7 +62,7 @@ void	Form::assignConstInt(int const & val, int const & toVal) {
 	int*	modify;
 
 	modify = (int*)&val;
-	*modify = (int)toVal;	
+	*modify = (int)toVal;
 }
 
 void	Form::assignConstString(std::string const & val, std::string const & toVal) {

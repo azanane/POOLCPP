@@ -4,25 +4,19 @@ int	main()
 {
 	try {
 
-		Bureaucrat	bureaucrat("Anas", 0);
+		Bureaucrat	bureaucrat("Anas", 1); // allocate, reseau, file
 
-		PRINT("");
-		Bureaucrat	randomBureuacrat("Max", 151);
+		Bureaucrat	randomBureuacrat("Max", 150);
 
 		Bureaucrat	copyRandomBureaucrat(randomBureuacrat);
 
 		Bureaucrat	equalRandomBureaucrat = randomBureuacrat;
-
-
-		PRINT(std::endl << std::endl)
 		
 		Bureaucrat	highestBureaucrat("Anas", 1);
+		
 		PRINT( highestBureaucrat )
 
-		++highestBureaucrat;
-
-		PRINT("");
-		std::cout << --highestBureaucrat;
+		highestBureaucrat.increaseGrade();
 	}
 	catch (std::exception& e)
 	{
@@ -32,3 +26,4 @@ int	main()
 
 	return 0;
 }
+

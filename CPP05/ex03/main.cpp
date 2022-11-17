@@ -7,6 +7,7 @@
 
 int	main() 
 {
+	srand(time(NULL));
 	try {
 
 		Intern someRandomIntern;
@@ -17,7 +18,10 @@ int	main()
 		Bureaucrat	bureaucrat("Anas", 1);
 		rrf->beSigned(bureaucrat);
 		bureaucrat.executeForm(*rrf);
+		delete rrf;
 
+		rrf = someRandomIntern.makeForm("robotomyyyyyyy request", "Bender");
+			
 	}
 	catch (std::exception& e)
 	{

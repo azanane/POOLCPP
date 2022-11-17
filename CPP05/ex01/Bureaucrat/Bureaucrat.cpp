@@ -48,40 +48,20 @@ void	Bureaucrat::signForm( std::string const & formName, bool const & signedForm
 		PRINT(this->_name << " couldn't sign " << formName << " because he don't have the required grade")
 }
 
-Bureaucrat & Bureaucrat::operator++( void ) {
+void Bureaucrat::increaseGrade( void ) {
 
 	if (this->_grade == 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		this->_grade -= 1;
-
-	return *this;
 }
 
-Bureaucrat Bureaucrat::operator++( int ) {
-
-	Bureaucrat	newInstance = *this;
-
-	operator++();
-	return newInstance;
-}
-
-Bureaucrat & Bureaucrat::operator--( void ) {
+void Bureaucrat::decreaseGrade( void ) {
 
 	if (this->_grade == 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
 		this->_grade += 1;
-
-	return *this;
-}
-
-Bureaucrat Bureaucrat::operator--( int ) {
-
-	Bureaucrat	newInstance = *this;
-
-	operator--();
-	return newInstance;
 }
 
 std::ostream & operator<<( std::ostream & o, Bureaucrat const & i ) {

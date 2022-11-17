@@ -20,7 +20,7 @@ AForm & AForm::operator=( AForm const & rhs ) {
 
 	this->assignConstString(this->_name, rhs._name);
 
-	if (rhs._gradeToSign < 1 || rhs._gradeToExecute)
+	if (rhs._gradeToSign < 1 || rhs._gradeToExecute < 1)
 		throw AForm::GradeTooHighException();
 	if (rhs._gradeToSign > 150 || rhs._gradeToExecute > 150)
 		throw AForm::GradeTooLowException();
@@ -37,7 +37,9 @@ AForm::~AForm( void ) {}
 
 void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
 
-	if (bureaucrat.getGrade() <= this->_gradeToSign) {
+	if (this->_signedAForm)
+		PRINT(this->_name << " is already signed")
+	else if (bureaucrat.getGrade() <= this->_gradeToSign) {
 
 		this->_signedAForm = true;
 		bureaucrat.signForm(this->_name, this->_signedAForm);
@@ -55,7 +57,7 @@ void AForm::execute( Bureaucrat const & executor ) const {
 	if (executor.getGrade() <= this->_gradeToExecute && this->getSignedAForm() == true)
 		this->_createForm();
 	else if (executor.getGrade() > this->_gradeToExecute)
-		throw AForm::GradeTooHighException();
+		throw AForm::GradeTooLowException();
 	else if (this->getSignedAForm() == false)
 		throw AForm::NotSignedForm();
 }

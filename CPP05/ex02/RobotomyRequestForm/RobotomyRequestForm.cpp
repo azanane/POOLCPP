@@ -24,6 +24,7 @@ void	RobotomyRequestForm::_createForm() const {
 
 	PRINT("*BRRRRRR BRRRRRR*")
 
+	srand(time(NULL));
 	if (std::rand() % 2 == 0)
 		PRINT(this->_target << " successfully robotized.")
 	else

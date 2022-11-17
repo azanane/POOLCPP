@@ -26,10 +26,8 @@ class Bureaucrat {
 		void	signForm( std::string const & formName, bool const & signedForm ) const;
 		void	executeForm( AForm const & form ) const;
 
-		Bureaucrat & operator++( void );
-		Bureaucrat operator++( int );
-		Bureaucrat & operator--( void );
-		Bureaucrat operator--( int );
+		void	increaseGrade( void );
+		void	decreaseGrade( void );
 
 		class GradeTooHighException : public std::exception {
 

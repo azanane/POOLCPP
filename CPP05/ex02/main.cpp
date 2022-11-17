@@ -28,8 +28,8 @@ int	main()
 		delete formPresidential;
 
 		PRINT("");
-		AForm*	formPresidentialNonSigned = new PresidentialPardonForm("formPresidential");
-		bureaucrat.executeForm(*formPresidentialNonSigned);
+		PresidentialPardonForm formPresidentialNonSigned("formPresidential");
+		bureaucrat.executeForm(formPresidentialNonSigned);
 
 	}
 	catch (std::exception& e)

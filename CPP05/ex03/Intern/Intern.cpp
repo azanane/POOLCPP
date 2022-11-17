@@ -28,16 +28,15 @@ AForm* Intern::makeForm( std::string const & formName, std::string const & targe
 	}
 
 	switch (search) {
-
-		case -1:
-			throw Intern::UnexistantForm();
 		case 0:
 			return new ShrubberyCreationForm(target);
 		case 1:
 			return new RobotomyRequestForm(target);
 		case 2:
 			return new PresidentialPardonForm(target);
+		default:
+			throw Intern::UnexistantForm();
 	}
 
-	throw Intern::UnexistantForm();
+	//throw Intern::UnexistantForm();
 }

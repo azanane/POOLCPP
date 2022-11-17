@@ -37,6 +37,4 @@ AForm* Intern::makeForm( std::string const & formName, std::string const & targe
 		default:
 			throw Intern::UnexistantForm();
 	}
-
-	//throw Intern::UnexistantForm();
 }

@@ -4,7 +4,7 @@ int	main()
 {
 	try {
 
-		Bureaucrat	bureaucrat("Anas", 1); // allocate, reseau, file
+		Bureaucrat	bureaucrat("Anas", 1);
 
 		Bureaucrat	randomBureuacrat("Max", 150);
 

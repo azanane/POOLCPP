@@ -21,7 +21,7 @@ Intern::~Intern( void ) {}
 AForm* Intern::makeForm( std::string const & formName, std::string const & target ) const {
 
 	int	search = -1;
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 3; i++) {
 		
 		if (formName.compare(this->_compare[i]) == 0)
 			search = i;

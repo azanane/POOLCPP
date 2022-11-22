@@ -1,33 +1,11 @@
 #include "Cast.hpp"
 
-const std::string Cast::_compareType[4] = {"char", "int", "float", "double"};
-
 Cast::Cast( void ) {}
 
-Cast::Cast( char* const nbToCast, std::string const & type ) {
+Cast::Cast( char* const nbToCast, std::string const & type ) : _nbDouble(strtod(nbToCast, NULL)), _type(type), _nbToCast(nbToCast) {
 
-	int	search = -1;
-	for (int i = 0; i < 4; i++) {
-		
-		if (type.compare(this->_compareType[i]) == 0)
-			search = i;
-	}
-	this->_type = search;
-
-	switch (this->_type) {
-		case 0:
-			this->_nbChar = *nbToCast;
-			return;
-		case 1:
-			this->_nbInt = static_cast<int>(*nbToCast);
-			return;
-		case 2:
-			this->_nbFloat = static_cast<float>(*nbToCast);
-			return;
-		case 3:
-			this->_nbDouble = static_cast<double>(*nbToCast);
-			return;
-	}
+	if (this->_type == "char")
+		this->_nbDouble = static_cast<double>(*this->_nbToCast);
 }
 
 Cast::Cast( Cast const & src ) {
@@ -41,69 +19,34 @@ Cast & Cast::operator=( Cast const & rhs ) {
 	this->_nbInt = rhs._nbInt;
 	this->_nbFloat = rhs._nbFloat;
 	this->_nbDouble = rhs._nbDouble;
-	this->_type = rhs._type;
 
 	return *this;
 }
 
 Cast::~Cast( void ) {}
 
-char	Cast::getNbChar() const {
+void	Cast::printNbChar() const {
 
-	switch (this->_type) {
-		
-		case 0:
-			return this->_nbChar;
-		case 1:
-			return static_cast<char>(this->_nbInt);
-		case 2:
-			return static_cast<char>(this->_nbFloat);
-		default:
-			return static_cast<char>(this->_nbDouble);
-	}
+	if (this->_nbDouble < 32 || this->_nbDouble > 126)
+		PRINT("char: " << "Non displayable")
+	else
+		PRINT("char: '" << static_cast<char>(this->_nbDouble) << "'")
 }
 
-int		Cast::getNbInt() const {
+void	Cast::printNbInt() const {
 
-	switch (this->_type) {
-		
-		case 0:
-			return static_cast<int>(this->_nbChar);
-		case 1:
-			return this->_nbInt;
-		case 2:
-			return static_cast<int>(this->_nbFloat);
-		default:
-			return static_cast<int>(this->_nbDouble);
-	}
+	if (this->_nbDouble < static_cast<double>(INT_MIN) || this->_nbDouble > static_cast<double>(INT_MAX))
+		PRINT("int: " << "overflow")
+	else
+		PRINT("int: " << static_cast<int>(this->_nbDouble))
 }
 
-float	Cast::getNbFloat() const {
+void	Cast::printNbFloat() const {
 
-	switch (this->_type) {
-		
-		case 0:
-			return static_cast<float>(this->_nbChar);
-		case 1:
-			return static_cast<float>(this->_nbInt);
-		case 2:
-			return this->_nbFloat;
-		default:
-			return static_cast<float>(this->_nbDouble);
-	}
+	PRINT("float: " << static_cast<float>(this->_nbDouble))
 }
 
-double	Cast::getNbDouble() const {
+void	Cast::printNbDouble() {
 
-	switch (this->_type) {
-		
-		case 0:
-			return static_cast<double>(this->_nbChar);
-		case 1:
-			return static_cast<double>(this->_nbInt);
-		case 2:
-			return static_cast<double>(this->_nbFloat);
-		default:
-			return this->_nbDouble;
-	}	
+	PRINT("double: " << this->_nbDouble)
 }

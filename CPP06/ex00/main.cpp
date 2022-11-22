@@ -1,6 +1,6 @@
 #include "Cast/Cast.hpp"
 
-std::string getNbType(char* const nb) {
+std::string printNbType(char* const nb) {
 
 	if (strlen(nb) == 1 && std::isdigit(nb[0]) == 0)
 		return "char";
@@ -11,8 +11,12 @@ std::string getNbType(char* const nb) {
 
 
 	size_t	countDigit = 0;
+	size_t	countNegative = 0;
 	size_t	countPoint = 0;
 	size_t	countFloat = 0;
+
+	if (nb[0] == '-')
+		++countNegative;
 
 	for (size_t i = 0; i < strlen(nb); i++) {
 
@@ -24,11 +28,11 @@ std::string getNbType(char* const nb) {
 			++countFloat;
 	}
 
-	if (countDigit == strlen(nb)) // ex : 42
+	if (countDigit + countNegative == strlen(nb)) // ex : 42
 		return "int";
-	else if (countDigit + countPoint == strlen(nb)) // ex : 42.0
+	else if (countDigit + countNegative + countPoint == strlen(nb)) // ex : 42.0
 		return "double";
-	else if (countDigit + countPoint + countFloat == strlen(nb) && countPoint) // ex : 42.0f
+	else if (countDigit + countNegative + countPoint + countFloat == strlen(nb) && countPoint) // ex : 42.0f
 		return "float";
 	
 	return "";
@@ -40,7 +44,7 @@ int	main(int ac, char **av)
 		PRINT("Need only one argument (char, int, float or double).")
 	else
 	{
-		std::string const & type = getNbType(av[1]);
+		std::string const & type = printNbType(av[1]);
 
 		if (type == "") {
 
@@ -48,15 +52,12 @@ int	main(int ac, char **av)
 			return 1;
 		}
 
-		// std::string			nb(av[1]);
 		Cast				nbCast(av[1], type);
 
-		PRINT("TYPE : " << type << std::endl)
-
-		PRINT("char: " << nbCast.getNbChar())
-		PRINT("int: " << nbCast.getNbInt())
-		PRINT("float: " << nbCast.getNbFloat())
-		PRINT("double: " << nbCast.getNbDouble())
+		nbCast.printNbChar();
+		nbCast.printNbInt();
+		nbCast.printNbFloat();
+		nbCast.printNbDouble();
 	}
 
 	return 0;

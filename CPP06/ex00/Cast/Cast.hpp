@@ -2,6 +2,7 @@
 # define CAST_HPP
 
 # include <iostream>
+# include <limits.h>
 # define PRINT(x) std::cout << x << std::endl;
 
 class Cast {
@@ -14,10 +15,10 @@ class Cast {
 
 		~Cast( void );
 
-		char		getNbChar() const;
-		int			getNbInt() const;
-		float		getNbFloat() const;
-		double		getNbDouble() const;
+		void		printNbChar() const;
+		void		printNbInt() const;
+		void		printNbFloat() const;
+		void		printNbDouble();
 
 	private:
 
@@ -28,9 +29,8 @@ class Cast {
 		float	_nbFloat;
 		double	_nbDouble;
 
-		int		_type;
-
-		static const std::string _compareType[4];
+		std::string	_type;
+		char		*_nbToCast;
 };
 
 #endif

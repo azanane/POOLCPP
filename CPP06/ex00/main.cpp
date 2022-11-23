@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 			return 1;
 		}
 
-		Cast				nbCast(av[1], type);
+		Cast	nbCast(av[1], type);
 
 		nbCast.printNbChar();
 		nbCast.printNbInt();

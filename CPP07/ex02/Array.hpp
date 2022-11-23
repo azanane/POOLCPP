@@ -52,7 +52,7 @@ Array<arrayType> & Array<arrayType>::operator=( Array<arrayType> const & rhs ) {
 	if (this == &rhs)
 		return *this;
 
-	if (this->_size > 0 && _array != NULL)
+	if (this->_size > 0 && this->_array != NULL)
 		delete [] this->_array;
 
 	this->_array = new arrayType[rhs._size];

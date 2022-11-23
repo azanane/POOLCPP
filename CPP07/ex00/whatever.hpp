@@ -6,7 +6,7 @@
 template<typename T>
 void	swap( T & firstValue, T & secondValue ) {
 
-	T	& tmpValue = firstValue;
+	T tmpValue = firstValue;
 
 	firstValue = secondValue;
 	secondValue = tmpValue;

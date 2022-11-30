@@ -1,18 +1,14 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
-#include <iostream>
+# include <iostream>
+# include <algorithm>
+# define PRINT(x) std::cout << x << std::endl;
 
-template<typename T>
-int	easyfind( T<int> const & container, int toFind ) {
+template< typename Container >
+typename Container::iterator	easyfind( Container & container, int toFind ) {
 
-	for (std::T::iterator it = container.begin(); it != container.end(); ++it) {
-
-		if (*it == toFind)
-			return 0;
-	}
-
-	return -1;
+	return std::find(container.begin(), container.end(), toFind);
 }
 
 #endif

@@ -4,17 +4,20 @@ GREEN=$'\x1b[32m
 BLUE=$'\x1b[34m
 ERASE=\033[2K\r
 
-SRCS	=	main.cpp \
+VPATH	=	Span/: \
 
-HEAD	=	./easyfind.hpp \
+SRCS	=	main.cpp \
+			Span.cpp \
+
+HEAD	=	./Span/Span.hpp \
 
 OBJS	=	$(addprefix .objects/, $(SRCS:.cpp=.o))
 
 CC			=	c++
 
-FLAGS		=	-std=c++98 -Wall -Wextra -Werror -pedantic
+FLAGS		=	-std=c++98 -Wall -Wextra -Werror 
 
-NAME		=	easyfind
+NAME		=	execSpan
 
 RM			=	rm -f
 

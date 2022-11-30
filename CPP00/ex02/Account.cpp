@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azanane <azanane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anaszanane <anaszanane@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:51 by anaszanane        #+#    #+#             */
-/*   Updated: 2022/08/24 10:12:05 by azanane          ###   ########.fr       */
+/*   Updated: 2022/11/30 08:39:41 by anaszanane       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
-
-
 
 
 Account::Account(void) {

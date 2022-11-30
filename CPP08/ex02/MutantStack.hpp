@@ -4,6 +4,7 @@
 # include <iostream>
 # include <vector>
 # include <stack>
+# include <list>
 # include <iterator>
 
 # define PRINT(x) std::cout << x << std::endl;

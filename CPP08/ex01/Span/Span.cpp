@@ -13,7 +13,6 @@ Span & Span::operator=( Span const & rhs ) {
 
 	this->_size = rhs._size;
 
-	// for (std::vector<int>::iterator it = )
 	this->_container = rhs._container;
 
 	return *this;
@@ -65,8 +64,8 @@ int	Span::shortestSpan( void ) {
 	int	getShort;
 	int	count = 0;
 
-	std::vector<int>::iterator	it;
-	std::vector<int>::iterator	cmpIt;
+	std::vector<int>::const_iterator	it;
+	std::vector<int>::const_iterator	cmpIt;
 	for (it = this->_container.begin(); it != this->_container.end(); ++it) {
 
 		if (count == 1) {

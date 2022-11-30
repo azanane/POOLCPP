@@ -6,7 +6,7 @@ int main()
 	try {
 
 		Span sp = Span(5);
-		
+	
 		sp.addNumber(6);
 
 		PRINT("Shortest span with only one element: " << sp.shortestSpan())
@@ -27,7 +27,6 @@ int main()
 	}
 	catch (std::exception& e)
 	{
-
 		PRINT(e.what())
 	}
 

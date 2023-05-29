@@ -4,12 +4,12 @@ GREEN=$'\x1b[32m
 BLUE=$'\x1b[34m
 ERASE=\033[2K\r
 
-VPATH	=	BitcoinExchange/: \
+VPATH	=	RPN/: \
 
 SRCS	=	main.cpp \
-			BitcoinExchange.cpp \
+			RPN.cpp \
 
-HEAD	=	./BitcoinExchange/BitcoinExchange.hpp \
+HEAD	=	./RPN/RPN.hpp \
 
 OBJS	=	$(addprefix .objects/, $(SRCS:.cpp=.o))
 
@@ -17,7 +17,7 @@ CC			=	c++
 
 FLAGS		=	-std=c++98 -Wall -Wextra -Werror -pedantic
 
-NAME		=	bitcoinExchangeExec
+NAME		=	rpnExec
 
 RM			=	rm -f
 

@@ -70,7 +70,8 @@ BitcoinExchange::BitcoinExchange( std::ifstream& priceData, std::ifstream& recei
 
 BitcoinExchange::BitcoinExchange( BitcoinExchange const & src ) {
 
-	*this = src;
+	if (&src != this) 
+		*this = src;
 }
 
 BitcoinExchange & BitcoinExchange::operator=( BitcoinExchange const & rhs ) {

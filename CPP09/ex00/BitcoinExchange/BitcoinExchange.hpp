@@ -20,9 +20,6 @@ class BitcoinExchange {
 		~BitcoinExchange( void );
 
 		void		getExchange( std::string date, float amount ) const;
-		std::string	compareDate(std::string inputDate, std::string date) const;
-		bool 		isNumber(std::string number, bool isPrice) const;
-		bool 		isValidDate(std::string date) const;
 
 		class InvalidData : public std::exception {
 
@@ -36,6 +33,10 @@ class BitcoinExchange {
 		BitcoinExchange( void );
 
 		std::map<std::string, float>	_priceContainer;
+
+		std::string	compareDate(std::string inputDate, std::string date) const;
+		bool 		isNumber(std::string number, bool isPrice) const;
+		bool 		isValidDate(std::string date) const;
 };
 
 #endif

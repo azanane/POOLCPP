@@ -24,6 +24,7 @@ int main(int ac, char **av)
 	if (inputFile.fail()) {
 		
 		PRINT("Wrong filename.\n")
+		priceFile.close();
 		return 2;
 	}
 

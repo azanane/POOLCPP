@@ -35,6 +35,14 @@ class RPN {
 				virtual const char * what() const throw() {return "Error : a number submitted should be between 0 and 9";}
 		};
 
+		class OperationError : public std::exception {
+
+			public:
+
+				virtual const char * what() const throw() {return "Error : unauthorized operation";}
+		};
+
+
 	private:
 
 		RPN( void );

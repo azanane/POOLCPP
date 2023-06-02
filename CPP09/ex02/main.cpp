@@ -1,6 +1,16 @@
 #include "PmergeMe/PmergeMe.hpp"
 #include <sys/time.h>
 
+bool isNumber(const std::string& operation) {
+
+	if (operation[0] >= 48 && operation[0] <= 57) {
+
+		return true;
+	}
+
+	return false;
+}
+
 int main(int ac, char **av)
 {
 
@@ -24,17 +34,10 @@ int main(int ac, char **av)
 		while (index < str.size()) {
 
 
-			if ((str[index] < 48 || str[index] > 57) && str[index] != 32) {
+			if (str[index] < 48 || str[index] > 57) {
 
-				PRINT(str[index] << " Error");
+				PRINT("Error");
 				return 1;
-			}
-			else if (str[index] == 32) {
-
-				indexTmp = index;
-
-				numbersVector.push_back(std::stoi(str.substr(indexTmp, index)));
-				numbersDeque.push_back(std::stoi(str.substr(indexTmp, index)));
 			}
 			else if (index + 1 == str.size()) {
 
@@ -46,6 +49,11 @@ int main(int ac, char **av)
 		}
 
 		i++;
+	}
+
+	if (numbersVector.size() < 1) {
+		PRINT("Empty list")
+		return 1;
 	}
 
 	PRINTWOENDL("Before : ") 

@@ -14,7 +14,7 @@ RPN::RPN( const std::string& operation ) {
 			while (operation[index] >= 48 && operation[index] <= 57 && index < operation.size())
 				index++;
 		}
-		else if (isOperand(operation[index]) == true) {
+		if (isOperand(operation[index]) == true) {
 
 			resolveOperation(operation[index]);
 		}
@@ -42,6 +42,10 @@ RPN & RPN::operator=( RPN const & rhs ) {
 RPN::~RPN( void ) {}
 
 void RPN::resolveOperation(const char operand) {
+
+	if (this->_operationStack.size() < 2 || this->_operationStack.size() > 3)
+		throw RPN::OperationError();
+
 
 	float firstValue, secondValue;
 

@@ -16,7 +16,7 @@ BitcoinExchange::BitcoinExchange( std::ifstream& priceData, std::ifstream& recei
 		if (date != "date") {
 
 			if ( isNumber(content_tmp.substr(pos + 1), true) == true 
-				&& isValidDate(date) == true ) 
+				&& isValidDate(date).substr(0, 5) != "Error" ) 
 			{
 				price = std::stof(content_tmp.substr(pos + 1));
 				this->_priceContainer.insert(std::pair<std::string, float>(date, price));
@@ -44,7 +44,7 @@ BitcoinExchange::BitcoinExchange( std::ifstream& priceData, std::ifstream& recei
 				if (isNumber(content_tmp.substr(pos + 2), true) == true 
 					|| (content_tmp.substr(pos + 2)[0] == '-' && isNumber(content_tmp.substr(pos + 3), true) == true)) {
 
-					isValidDate(date);
+					date = isValidDate(date);
 					price = std::stof(content_tmp.substr(pos + 1));
 
 					if (price < 0) {
@@ -84,6 +84,13 @@ BitcoinExchange & BitcoinExchange::operator=( BitcoinExchange const & rhs ) {
 BitcoinExchange::~BitcoinExchange( void ) {}
 
 void	BitcoinExchange::getExchange( std::string date, float amount ) const {
+
+	if (date.substr(0, 5) == "Error") {
+
+		PRINT(date)
+		return ;
+	}
+
 
 	std::map<std::string, float>::const_iterator search = this->_priceContainer.find(date);
 	
@@ -158,6 +165,7 @@ bool BitcoinExchange::isNumber(std::string number, bool isPrice) const {
 
 	int i = 0;
 	int countPoint = 0;
+	int countNumber = 0;
 	while (number[i]) {
 
 		if (number[i] == '.' && countPoint == 0 && isPrice == true)
@@ -166,13 +174,18 @@ bool BitcoinExchange::isNumber(std::string number, bool isPrice) const {
 			return false;
 		else if (std::isdigit(number[i]) == false)
 			return false;
+		else if (std::isdigit(number[i]) == true)
+			countNumber++;
 		i++;
 	}
+
+	if (countNumber == 0)
+		return false;
 
 	return true;
 }
 
-bool BitcoinExchange::isValidDate(std::string date) const {
+std::string BitcoinExchange::isValidDate(std::string date) const {
 
 	int year = 0, month = 0, day = 0;
 	std::size_t pos[3];
@@ -200,33 +213,29 @@ bool BitcoinExchange::isValidDate(std::string date) const {
 
 				if ( day > 30 ) {
 	
-					date = "Error: Bad input => " + date;
-					return false;
+					return "Error: Bad input => " + date;
 				}
 			}
 			else if (month == 2 && day == 29) {
 
 				if (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)) {
 
-					date = "Error: Bad input => " + date;
-					return false;
+					return "Error: Bad input => " + date;
 				}
 			}
 		}
 		else { 
 
-			date = "Error: Bad input => " + date; 
-			return false; 
+			return "Error: Bad input => " + date;
 		}
 		oldPos = pos[i] + 1;
 		i++;
 	}
 
-	if (month < 1 || month > 12 || day < 1 || day > 31 || (month == 2 && day > 29)) {
+	if (month < 1 || month > 12 || day < 1 || day > 31 || (month == 2 && day > 29) || year < 2009) {
 	
-		date = "Error: Bad input => " + date;
-		return false;
+		return "Error: Bad input => " + date;
 	}
 
-	return true;
+	return date;
 }

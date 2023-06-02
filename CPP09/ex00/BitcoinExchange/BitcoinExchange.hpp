@@ -36,7 +36,7 @@ class BitcoinExchange {
 
 		std::string	compareDate(std::string inputDate, std::string date) const;
 		bool 		isNumber(std::string number, bool isPrice) const;
-		bool 		isValidDate(std::string date) const;
+		std::string	isValidDate(std::string date) const;
 };
 
 #endif

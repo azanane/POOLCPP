@@ -41,8 +41,18 @@ int main(int ac, char **av)
 			}
 			else if (index + 1 == str.size()) {
 
-				numbersVector.push_back(std::stoi(str.substr(indexTmp, index + 1)));
-				numbersDeque.push_back(std::stoi(str.substr(indexTmp, index + 1)));
+				long numberLong = std::atol(str.substr(indexTmp, index + 1).c_str()); 
+
+				if (numberLong > 2147483647) {
+					
+					PRINT("Error : " << str.substr(indexTmp, index + 1).c_str() << " or the input only take integers");
+					return 1;
+				}
+
+				int number = std::atoi(str.substr(indexTmp, index + 1).c_str());
+
+				numbersVector.push_back(number);
+				numbersDeque.push_back(number);
 			}
 
 			index++;

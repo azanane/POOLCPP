@@ -18,7 +18,7 @@ BitcoinExchange::BitcoinExchange( std::ifstream& priceData, std::ifstream& recei
 			if ( isNumber(content_tmp.substr(pos + 1), true) == true 
 				&& isValidDate(date).substr(0, 5) != "Error" ) 
 			{
-				price = std::stof(content_tmp.substr(pos + 1));
+				price = std::atof(content_tmp.substr(pos + 1).c_str());
 				this->_priceContainer.insert(std::pair<std::string, float>(date, price));
 			}
 			else throw BitcoinExchange::InvalidData();
@@ -45,7 +45,7 @@ BitcoinExchange::BitcoinExchange( std::ifstream& priceData, std::ifstream& recei
 					|| (content_tmp.substr(pos + 2)[0] == '-' && isNumber(content_tmp.substr(pos + 3), true) == true)) {
 
 					date = isValidDate(date);
-					price = std::stof(content_tmp.substr(pos + 1));
+					price = std::atof(content_tmp.substr(pos + 1).c_str());
 
 					if (price < 0) {
 						PRINT("Error : not a positive number => " << price);
@@ -135,15 +135,15 @@ std::string BitcoinExchange::compareDate(std::string inputDate, std::string date
 	int inputYear, inputMonth, inputDay, year, month, day;
 	int pos = inputDate.find("-");
 
-	inputYear = std::stoi(inputDate.substr(0, pos));
-	inputMonth = std::stoi(inputDate.substr(pos + 1, 2));
-	inputDay = std::stoi(inputDate.substr(pos + 4, 2));
+	inputYear = std::atoi(inputDate.substr(0, pos).c_str());
+	inputMonth = std::atoi(inputDate.substr(pos + 1, 2).c_str());
+	inputDay = std::atoi(inputDate.substr(pos + 4, 2).c_str());
 
 	pos = date.find("-");
 
-	year = std::stoi(date.substr(0, pos));
-	month = std::stoi(date.substr(pos + 1, 2));
-	day = std::stoi(date.substr(pos + 4, 2));
+	year = std::atoi(date.substr(0, pos).c_str());
+	month = std::atoi(date.substr(pos + 1, 2).c_str());
+	day = std::atoi(date.substr(pos + 4, 2).c_str());
 
 	if (year < inputYear)
 		return "greater";
@@ -199,15 +199,15 @@ std::string BitcoinExchange::isValidDate(std::string date) const {
 		
 		if (i == 0 && isNumber(date.substr(oldPos, pos[i]), false) == true && year == 0) {
 
-			year = std::stoi(date.substr(oldPos, pos[i]));
+			year = std::atoi(date.substr(oldPos, pos[i]).c_str());
 		}
 		else if (isNumber(date.substr(oldPos, 2), false) == true && month == 0 && i == 1) {
 
-			month = std::stoi(date.substr(oldPos, 2));
+			month = std::atoi(date.substr(oldPos, 2).c_str());
 		}
 		else if (isNumber(date.substr(oldPos, 2), false) == true && day == 0 && i == 2) {
 
-			day = std::stoi(date.substr(oldPos, 2));
+			day = std::atoi(date.substr(oldPos, 2).c_str());
 
 			if (month == 4 || month == 6 || month == 9 || month == 11) {
 

@@ -76,7 +76,7 @@ bool RPN::isNumber(const std::string& operation, float *number) const {
 		while (operation[index] >= 48 && operation[index] <= 57 && index < operation.size())
 			index++;
 
-		*number = std::stoi(operation.substr(0, index));
+		*number = std::atoi(operation.substr(0, index).c_str());
 
 		if (*number < 0 || *number > 9)
 			throw RPN::RangeError();

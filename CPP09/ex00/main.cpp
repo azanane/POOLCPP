@@ -17,10 +17,9 @@ int main(int ac, char **av)
 		return 2;
 	}
 
-	std::string		fileName(av[1]);
 	std::ifstream	inputFile;
 
-	inputFile.open(fileName);
+	inputFile.open(av[1]);
 	if (inputFile.fail()) {
 		
 		PRINT("Wrong filename.\n")

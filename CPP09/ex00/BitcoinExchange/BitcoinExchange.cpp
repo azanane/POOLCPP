@@ -44,7 +44,10 @@ BitcoinExchange::BitcoinExchange( std::ifstream& priceData, std::ifstream& recei
 				if (isNumber(content_tmp.substr(pos + 2), true) == true 
 					|| (content_tmp.substr(pos + 2)[0] == '-' && isNumber(content_tmp.substr(pos + 3), true) == true)) {
 
-					date = isValidDate(date);
+					if (date[date.size() - 1] == ' ')
+						date = isValidDate(date.substr(0, date.size() - 1));
+					else
+						date = isValidDate(date);
 					price = std::atof(content_tmp.substr(pos + 1).c_str());
 
 					if (price < 0) {
@@ -124,7 +127,7 @@ void	BitcoinExchange::getExchange( std::string date, float amount ) const {
 			}
 		
 			i++;
-			if (i == this->_priceContainer.size() - 1)
+			if (i == this->_priceContainer.size())
 				PRINT(date << " => " << amount << " = " << product)
 		}
 	}

@@ -22,7 +22,10 @@ RPN::RPN( const std::string& operation ) {
 		index++;
 	}
 
-	PRINT(this->_operationStack.top())
+	if (this->_operationStack.size() == 1)
+		PRINT(this->_operationStack.top())
+	else
+		throw RPN::OperationError();
 }
 
 RPN::RPN( void ) {}
@@ -43,7 +46,7 @@ RPN::~RPN( void ) {}
 
 void RPN::resolveOperation(const char operand) {
 
-	if (this->_operationStack.size() < 2 || this->_operationStack.size() > 3)
+	if (this->_operationStack.size() < 2)
 		throw RPN::OperationError();
 
 
